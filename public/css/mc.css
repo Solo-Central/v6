@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #181818;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.launcher {
+    font-family: 'Poppins' sans-serif;
+    width: 900px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    font-family: 'Poppins', sans-serif;
+    background: #121212;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 3px solid #26a269;
+}
+
+.game-content {
+    position: relative;
+    text-align: center;
+    background: #262626;
+    padding-bottom: 50px;
+}
+
+.game-content img {
+    width: 100%;
+    border-bottom: 3px solid #26a269;
+    object-fit: cover;
+    height: 300px;
+}
+
+.play-button {
+    font-family: 'mc', sans-serif;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #26a269;
+    padding: 15px 50px;
+    font-size: 30px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.1s;
+    text-align: center;
+}
+
+.play-button:hover {
+    background: #1f8a54;
+    transform: translateX(-50%) scale(1.05);
+}
+
+.play-button:active {
+    background: #16643f;
+    transform: translateX(-50%) scale(0.95);
+}
+
+.selectors-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #181818;
+    font-family: 'Poppins', sans-serif;
+}
+
+.version-selector, .devices {
+    width: 48%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.version-selector label, .devices label {
+    font-size: 16px;
+    margin-right: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.version-selector select, .devices select {
+    background: #2a2a2a;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.version-selector select:hover, .devices select:hover {
+    background: #3a3a3a;
+}
+
+.footer {
+    background: #121212;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+}
+
+@font-face {
+    font-family: mc;
+    src: url(../assets/MinecraftTen-VGORe.ttf)
+  }  

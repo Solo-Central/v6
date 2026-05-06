@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script src="https://cdn.jsdelivr.net/gh/solual/-/ads/link.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random</title>
+    <script>
+        async function redirectToRandomUrl() {
+            try {
+                const response = await fetch('/json/gg.json');
+                const data = await response.json();
+                
+                const validEntries = data.filter(entry => 
+                    entry.alt !== "01" && entry.alt !== "0" && entry.url
+                );
+                
+                if (validEntries.length === 0) {
+                    document.body.innerHTML = '<h1>No valid URLs available</h1>';
+                    return;
+                }
+                
+                const randomEntry = validEntries[Math.floor(Math.random() * validEntries.length)];
+                
+                if (randomEntry.url.startsWith('/noframe')) {
+                    window.location.href = randomEntry.url;
+                } else {
+                    window.location.href = `/iframe.html?url=${encodeURIComponent(randomEntry.url)}`;
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.body.innerHTML = `
+                    <h1>Error loading redirect data</h1>
+                    <p>${error.message}</p>
+                    <button onclick="window.location.reload()">Try Again</button>
+                `;
+            }
+        }
+        
+        window.onload = redirectToRandomUrl;
+    </script>
+</head>
+<body>
+    <h1>loading...</h1>
+</body>
+</html>

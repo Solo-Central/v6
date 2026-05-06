@@ -1,0 +1,17 @@
+Ultraviolet-App/node_modules/
+node_modules
+.vscode
+public/emulatorjavascript/data/cores/
+public/gsrc/snowrider3d/
+public/gsrc/timeshooter2/
+public/gsrc/10minutestilldawn/Build/10MinutesTillDawnWebGL.data.unityweb
+public/gsrc/10minutestilldawn/Build/10MinutesTillDawnWebGL.wasm.code.unityweb
+public/gsrc/10minutestilldawn/Build/10MinutesTillDawnWebGL.wasm.framework.unityweb
+public/gsrc/1v1lol/Build/webgl - rc.data.unityweb
+public/gsrc/1v1lol/Build/webgl - rc.wasm.code.unityweb
+public/gsrc/1v1lol/Build/webgl - rc.wasm.framework.unityweb
+public/gsrc/adofai/Build/adofaiii4.data.unityweb
+public/gsrc/cluster-rush/NG.data
+public/gsrc/drifthunters/dh.asm.code.unityweb
+public/gsrc/drifthunters/dh.asm.framework.unityweb
+public/gsrc/drifthunters/dh.asm.memory.unityweb

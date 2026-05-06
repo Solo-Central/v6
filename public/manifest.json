@@ -1,0 +1,21 @@
+{ 
+
+  "name": "Solo Central", 
+
+  "short_name": "Solo Central", 
+
+  "start_url": "/", 
+
+  "display": "standalone", 
+
+  "icons": [{ 
+
+    "src": "/assets/logo.png", 
+
+    "sizes": "512x512", 
+
+    "type": "image/png" 
+
+  }] 
+
+}
