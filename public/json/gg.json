@@ -1028,5 +1028,10 @@
     "url": "/gxmez/minusb.html",
     "img": "/assets/minusb.png",
     "alt": "-b" 
+  },
+  {
+    "url": "/gxmez/hollow-knight.html",
+    "img": "/assets/hollow-knight.webp",
+    "alt": "Hollow Knight" 
   }
 ]
