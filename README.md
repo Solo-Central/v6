@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://files.catbox.moe/vl5cij.png" alt="Solo Centraling" width="250">
+  <img src="https://cdn.jsdelivr.net/gh/Solo-Central/v6@main/public/assets/logo.webp" alt="Solo Centraling" width="250">
 </p>
 
 <h1 align="center">Solo Central V6</h1>
