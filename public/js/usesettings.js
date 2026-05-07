@@ -1,3 +1,32 @@
+const v2Style = document.createElement('style');
+v2Style.textContent = `
+[data-theme="v2"] {
+  --primary-bg: #171722;
+  --secondary-bg: #212134;
+  --navbar-bg: #2a2a42;
+  --quicklink-bg: #1e1e30;
+  --quicklink-hover: #2d2d4a;
+  --accent-dark: #7a7a9e;
+  --accent-darker: #6a6a8e;
+  --accent-hover: #9d9dc9;
+  --accent-blue: #7a6a9e;
+  --accent-blue-dark: #6a5a8e;
+  --text-white: #e6e6f0;
+  --text-gray: #c8c8d8;
+  --text-disabled: #6a6a7a;
+  --border-primary: #7a7a9e;
+  --border-secondary: #9d9dc9;
+  --border-white: #e6e6f0;
+  --border-pink: #b8a8d8;
+  --shadow-primary: rgba(122, 122, 158, 0.4);
+  --shadow-secondary: rgba(157, 157, 201, 0.4);
+  --shadow-pink: rgba(184, 168, 216, 0.5);
+  --shadow-white: rgba(230, 230, 240, 0.2);
+  --loading-spinner: #9d9dc9;
+  --roddy-box-bg: rgba(33, 33, 52, 0.9);
+}`;
+document.head.appendChild(v2Style);
+
 document.addEventListener('DOMContentLoaded', () => {
   const savedFaviconUrl = localStorage.getItem('faviconUrl');
   const savedTitle = localStorage.getItem('pageTitle');
@@ -63,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const configMap = {
       'dark': '/dark.json',
       'light': '/light.json',
-      'mexi': '/mexi.json',
+      'mexi': '/particlesjs-config.json',
       'bubblegum': '/bubblegum.json',
       'brunys': '/brunys.json',
       'evergreen': '/evergreen.json',
@@ -72,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'solarflare': '/solarflare.json',
       'moonlight': '/moonlight.json',
       'v1': null,
+      'v2': '/szvy.json',
       'default': '/particlesjs-config.json'
     };
 
@@ -88,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const themeToApply = savedTheme || 'default';
+  const themeToApply = savedTheme || 'mexi';
   document.documentElement.setAttribute('data-theme', themeToApply);
   
   if (themeDropdown) {

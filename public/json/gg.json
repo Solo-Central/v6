@@ -1033,5 +1033,15 @@
     "url": "/gxmez/hollow-knight.html",
     "img": "/assets/hollow-knight.webp",
     "alt": "Hollow Knight" 
+  },
+  {
+    "url": "/gxmez/fnae.html",
+    "img": "/assets/fnae.webp",
+    "alt": "Five Nights at Epstein's" 
+  },
+  {
+    "url": "/gsrc/baldis-birthday-bash/index.html",
+    "img": "/assets/baldis-birthday-bash.webp",
+    "alt": "Baldi's Birthday Bash" 
   }
 ]
