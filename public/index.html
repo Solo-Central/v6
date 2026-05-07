@@ -125,18 +125,6 @@
          <script src="/qatual/config.js?cdn" defer></script>
          <script>
             document.addEventListener("DOMContentLoaded", async function () {
-              console.log(`
-              /$$$$$$$ /$$$$$$$$ /$$    /$$ /$$   /$$
-             /$$_____/|____ /$$/|  $$  /$$/| $$  | $$
-            |  $$$$$$    /$$$$/  \\  $$/$$/ | $$  | $$
-             \\____  $$  /$$__/    \\  $$$/  | $$  | $$
-             /$$$$$$$/ /$$$$$$$$   \\  $/   |  $$$$$$$
-            |_______/ |________/    \\_/     \\____  $$
-                                            /$$  | $$
-                                           |  $$$$$$/
-                                            \\______/
-            `);
-          
               if ('serviceWorker' in navigator) {
                 try {
                   await navigator.serviceWorker.register("/qatual/sw.js", { scope: "/qatual/" });
