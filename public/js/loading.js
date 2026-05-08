@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
         "rip endis",
         "solo central on top",
         "follow me on tiktok @qatual",
+        "hello probably",
+        "my birthday is may 23rd :)",
+        "tung tung tung sahur",
+        "myles is 110% a femboy",
         "booyah!"
     ];
 
