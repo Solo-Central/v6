@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedKeybind = localStorage.getItem('keybind');
   const savedCustomUrl = localStorage.getItem('customUrl');
   const savedTheme = localStorage.getItem('siteTheme');
+  const themeToApply = savedTheme || 'default';
+  document.documentElement.setAttribute('data-theme', themeToApply);
 
   if (savedFaviconUrl) {
     let link = document.querySelector('link[rel="shortcut icon"]') || document.createElement('link');
@@ -94,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
       'light': '/light.json',
       'mexi': '/particlesjs-config.json',
       'bubblegum': '/bubblegum.json',
-      'brunys': '/brunys.json',
       'evergreen': '/evergreen.json',
       'frogiee': '/frogiee.json',
       'lavender': '/lavender.json',
@@ -118,9 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const themeToApply = savedTheme || 'mexi';
-  document.documentElement.setAttribute('data-theme', themeToApply);
-  
   if (themeDropdown) {
     themeDropdown.value = themeToApply;
     themeDropdown.addEventListener('change', () => {

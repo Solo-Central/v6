@@ -1025,11 +1025,6 @@
     "alt": "tiny fishing" 
   },
   {
-    "url": "/gxmez/minusb.html",
-    "img": "/assets/minusb.png",
-    "alt": "-b" 
-  },
-  {
     "url": "/gxmez/hollow-knight.html",
     "img": "/assets/hollow-knight.webp",
     "alt": "Hollow Knight" 
@@ -1063,5 +1058,20 @@
     "url": "/gxmez/gorillatag.html",
     "img": "/assets/gorillatag.webp",
     "alt": "Gorilla Tag" 
+  },
+  {
+    "url": "/gsrc/minusb/",
+    "img": "/assets/minusb.webp",
+    "alt": "-b" 
+  },
+  {
+    "url": "/gsrc/minus3/",
+    "img": "/assets/minus3.webp",
+    "alt": "-3" 
+  },
+  {
+    "url": "/gsrc/t3/",
+    "img": "/assets/t3.webp",
+    "alt": "T3" 
   }
 ]
