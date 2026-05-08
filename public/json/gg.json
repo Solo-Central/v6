@@ -1053,5 +1053,10 @@
     "url": "/gxmez/silksong.html",
     "img": "/assets/silksong.webp",
     "alt": "Hollow Knight: Silksong" 
+  },
+  {
+    "url": "/gxmez/gdwebplus.html",
+    "img": "/assets/gdwebplus.webp",
+    "alt": "Geometry Dash" 
   }
 ]
