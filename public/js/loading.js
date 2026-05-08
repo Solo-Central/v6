@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
         "fanq stop breaching my vps",
         "'francc stop lyin you aint 22' actual peak tag",
         "discord.gg/mUKy3wrMcp",
+        "certain tax provisions",
+        "rip endis",
+        "solo central on top",
+        "follow me on tiktok @qatual",
         "booyah!"
     ];
 
