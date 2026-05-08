@@ -1048,5 +1048,10 @@
     "url": "/gxmez/brotato/index.html",
     "img": "/assets/brotato.webp",
     "alt": "Brotato" 
+  },
+  {
+    "url": "/gxmez/silksong/index.html",
+    "img": "/assets/silksong.webp",
+    "alt": "Hollow Knight: Silksong" 
   }
 ]
