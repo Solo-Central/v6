@@ -1058,5 +1058,10 @@
     "url": "/gxmez/gdwebplus.html",
     "img": "/assets/gdwebplus.webp",
     "alt": "Geometry Dash" 
+  },
+  {
+    "url": "/gxmez/gorillatag.html",
+    "img": "/assets/gorillatag.webp",
+    "alt": "Gorilla Tag" 
   }
 ]
