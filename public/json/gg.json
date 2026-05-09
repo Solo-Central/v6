@@ -1073,5 +1073,10 @@
     "url": "/gsrc/t3/",
     "img": "/assets/t3.webp",
     "alt": "T3" 
+  },
+  {
+    "url": "/gsrc/mclce/",
+    "img": "/assets/mclce.webp",
+    "alt": "Minecraft Legacy Console Edition" 
   }
 ]

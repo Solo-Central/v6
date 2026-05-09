@@ -49,7 +49,6 @@
     
     <div id="particles-js"></div>
     <div class="buttons-here">
-        <!-- loaded here :3 -->
     </div>
     
     <!-- eww, a script NOT loaded from a file -->
@@ -68,7 +67,7 @@
                         console.error('container not found');
                         return;
                     }
-        
+    
                     const appCountElement = document.getElementById("game-count");
                     if (appCountElement) {
                         appCountElement.textContent = data.length;
@@ -78,6 +77,8 @@
         
                     data.forEach(item => {
                         const linkElement = document.createElement('a');
+                        linkElement.className = 'game-link';
+                        linkElement.setAttribute('data-name', item.alt);
                         linkElement.href = item.url.startsWith('/extra/') || item.url.startsWith('/noframe/')
                             ? item.url
                             : `/iframe.html?url=${encodeURIComponent(item.url)}`;
