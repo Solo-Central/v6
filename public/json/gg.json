@@ -1060,7 +1060,7 @@
     "alt": "Gorilla Tag" 
   },
   {
-    "url": "/gsrc/minusb/",
+    "url": "/gsrc/minusb/index.html",
     "img": "/assets/minusb.webp",
     "alt": "-b" 
   },
@@ -1078,5 +1078,10 @@
     "url": "/gsrc/mclce/",
     "img": "/assets/mclce.webp",
     "alt": "Minecraft Legacy Console Edition" 
+  },
+  {
+    "url": "/gxmez/need-for-speed-most-wanted.html",
+    "img": "/assets/need-for-speed-most-wanted.webp",
+    "alt": "Need For Speed: Most Wanted" 
   }
 ]
