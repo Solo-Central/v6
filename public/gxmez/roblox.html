@@ -1,2 +1,67 @@
-<style>html,body{margin:0;height:100%;overflow:hidden}iframe{position:absolute;width:100vw;height:100vh;border:0}</style>
-<iframe src="../embed.html#https://www.easyfun.gg/embed/roblox.html"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>solo central vm</title>
+  <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+  <link rel="stylesheet" href="/css/index.css">
+  <script src="/js/loading.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; height: 100vh; overflow: hidden; }
+    #vm-container { display: none; flex-direction: column; height: 100vh; }
+    #vm-iframe { flex: 1; border: none; width: 100%; display: block; }
+  </style>
+</head>
+<body>
+
+  <div id="loading-screen">
+    <div id="loading-spinner"></div>
+    <h1 id="ld"></h1>
+  </div>
+
+  <div id="vm-container">
+    <iframe
+      id="vm-iframe"
+      allow="fullscreen; clipboard-read; clipboard-write; microphone; camera"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <script>
+    window.addEventListener('load', async function () {
+      var ls = document.getElementById('loading-screen');
+
+      var observer = new MutationObserver(function () {
+        if (ls.classList.contains('fade-out')) {
+          ls.classList.remove('fade-out');
+          document.body.classList.add('loading');
+        }
+      });
+      observer.observe(ls, { attributes: true, attributeFilter: ['class'] });
+
+      try {
+        var res = await fetch('/api/vm', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ start_url: 'https://educationbluesky.com/apps/mini-games-rb/19911/rivals.html' }),
+        });
+        var data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'vm wouldnt start :(');
+
+        document.getElementById('vm-iframe').src = data.embed_url;
+        document.getElementById('vm-container').style.display = 'flex';
+
+        observer.disconnect();
+        ls.classList.add('fade-out');
+        setTimeout(function () { document.body.classList.remove('loading'); }, 500);
+      } catch (err) {
+        observer.disconnect();
+        document.getElementById('ld').textContent = err.message;
+      }
+    });
+  </script>
+
+</body>
+</html>
