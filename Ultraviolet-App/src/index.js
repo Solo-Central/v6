@@ -15,6 +15,10 @@ app.use(express.static(publicPath));
 // The vendor's config.js won't conflict with our config.js inside the publicPath directory.
 app.use("/qatual/", express.static(uvPath));
 
+app.get("/u/*", (req, res) => {
+  res.sendFile(join(publicPath, "u", "index.html"));
+});
+
 // Error for everything else
 app.use((req, res) => {
   res.status(404);

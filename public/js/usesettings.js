@@ -27,14 +27,47 @@ v2Style.textContent = `
 }`;
 document.head.appendChild(v2Style);
 
+function loadParticlesConfig(theme) {
+  const configMap = {
+    'dark': '/dark.json',
+    'light': '/light.json',
+    'mexi': '/particlesjs-config.json',
+    'bubblegum': '/bubblegum.json',
+    'evergreen': '/evergreen.json',
+    'frogiee': '/frogiee.json',
+    'lavender': '/lavender.json',
+    'solarflare': '/solarflare.json',
+    'moonlight': '/moonlight.json',
+    'v1': null,
+    'v2': '/szvy.json',
+    'default': '/particlesjs-config.json'
+  };
+
+  const existingCanvas = document.querySelector('#particles-js canvas');
+  if (existingCanvas) existingCanvas.remove();
+
+  const configFile = configMap[theme];
+  if (configFile && typeof particlesJS !== 'undefined') {
+    particlesJS.load('particles-js', configFile, function() {});
+  }
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('siteTheme', theme);
+  loadParticlesConfig(theme);
+  const themeDropdown = document.getElementById('themee');
+  if (themeDropdown) themeDropdown.value = theme;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('siteTheme') || 'default';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
   const savedFaviconUrl = localStorage.getItem('faviconUrl');
   const savedTitle = localStorage.getItem('pageTitle');
   const savedKeybind = localStorage.getItem('keybind');
   const savedCustomUrl = localStorage.getItem('customUrl');
-  const savedTheme = localStorage.getItem('siteTheme');
-  const themeToApply = savedTheme || 'default';
-  document.documentElement.setAttribute('data-theme', themeToApply);
 
   if (savedFaviconUrl) {
     let link = document.querySelector('link[rel="shortcut icon"]') || document.createElement('link');
@@ -72,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateAnticloseHandler() {
     const isAnticloseEnabled = localStorage.getItem(ANTICLOSE_STORAGE_KEY) === 'true';
-    
     if (isAnticloseEnabled) {
       window.addEventListener('beforeunload', handleBeforeUnload);
     } else {
@@ -90,44 +122,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const themeDropdown = document.getElementById('themee');
 
-  function loadParticlesConfig(theme) {
-    const configMap = {
-      'dark': '/dark.json',
-      'light': '/light.json',
-      'mexi': '/particlesjs-config.json',
-      'bubblegum': '/bubblegum.json',
-      'evergreen': '/evergreen.json',
-      'frogiee': '/frogiee.json',
-      'lavender': '/lavender.json',
-      'solarflare': '/solarflare.json',
-      'moonlight': '/moonlight.json',
-      'v1': null,
-      'v2': '/szvy.json',
-      'default': '/particlesjs-config.json'
-    };
-
-    const existingCanvas = document.querySelector('#particles-js canvas');
-    if (existingCanvas) {
-      existingCanvas.remove();
-    }
-
-    const configFile = configMap[theme];
-    if (configFile && typeof particlesJS !== 'undefined') {
-      particlesJS.load('particles-js', configFile, function() {
-        console.log(`Particles.js config loaded: ${configFile}`);
-      });
-    }
-  }
-
   if (themeDropdown) {
-    themeDropdown.value = themeToApply;
+    themeDropdown.value = savedTheme;
     themeDropdown.addEventListener('change', () => {
       const selectedTheme = themeDropdown.value;
-      document.documentElement.setAttribute('data-theme', selectedTheme);
-      localStorage.setItem('siteTheme', selectedTheme);
-      loadParticlesConfig(selectedTheme);
+      applyTheme(selectedTheme);
+      if (window.__soloUser && window.__soloDB) {
+        import("https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js").then(({ doc, setDoc }) => {
+          setDoc(doc(window.__soloDB, 'users', window.__soloUser.uid), { theme: selectedTheme }, { merge: true });
+        });
+      }
     });
   }
 
-  loadParticlesConfig(themeToApply);
+  loadParticlesConfig(savedTheme);
+});
+
+document.addEventListener('soloAuthChanged', async (e) => {
+  const user = e.detail.user;
+  if (!user || !window.__soloDB) return;
+
+  const { doc, getDoc, setDoc } = await import("https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js");
+  const snap = await getDoc(doc(window.__soloDB, 'users', user.uid));
+
+  if (snap.exists() && snap.data().theme) {
+    applyTheme(snap.data().theme);
+  } else {
+    const localTheme = localStorage.getItem('siteTheme') || 'default';
+    setDoc(doc(window.__soloDB, 'users', user.uid), { theme: localTheme }, { merge: true });
+  }
 });

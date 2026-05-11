@@ -51,8 +51,38 @@ document.addEventListener('DOMContentLoaded', function () {
                         </a>
                     </div>
                 </div>
+                <div style="width:1px;height:24px;background:var(--border-primary);opacity:0.3;margin:0 6px;align-self:center;"></div>
+                <a href="/pages/account.html" class="nav-link" id="nav-account-link" title="Account">
+                    <img id="nav-account-avatar" src="" referrerpolicy="no-referrer" style="display:none;width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                    <i class="fa-solid fa-user" id="nav-account-icon"></i>
+                    <span class="link-text" id="nav-account-text">Account</span>
+                </a>
             </div>
         </nav>
     </div>`;
     document.body.prepend(navbar.firstElementChild);
+
+    const firebaseScript = document.createElement('script');
+    firebaseScript.type = 'module';
+    firebaseScript.src = '/js/firebase-init.js';
+    document.head.appendChild(firebaseScript);
+
+    document.addEventListener('soloAuthChanged', (e) => {
+        const user = e.detail.user;
+        const avatar = document.getElementById('nav-account-avatar');
+        const icon = document.getElementById('nav-account-icon');
+        const text = document.getElementById('nav-account-text');
+        if (!avatar || !icon || !text) return;
+
+        if (user) {
+            avatar.src = user.photoURL || '';
+            avatar.style.display = user.photoURL ? 'inline-block' : 'none';
+            icon.style.display = user.photoURL ? 'none' : '';
+            text.textContent = user.displayName || 'Account';
+        } else {
+            avatar.style.display = 'none';
+            icon.style.display = '';
+            text.textContent = 'Account';
+        }
+    });
 });

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/gh/solual/-/ads/link.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B8H2K339H7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B8H2K339H7');
+    </script>
+    <link rel="stylesheet" href="../css/index.css">
+    <title>calculator - Google Search</title>
+    <meta name="title" content="Solo Central" />
+    <meta name="description" content="Solo Central is one of the best websites for people to play games online." />
+    <meta name="keywords" content="unblocked games, unblocked, proxy, pr0xy, unbl0cked games, games, game, fnaf, minecraft, pr0xy, games unblocked, unbl0cked, fortnite, sizzle central, Solo Central, szvy, Solo Central games, savoy central, savoy, central games, savoy central games, unblocked gxmes, fun games, educational games, education, classroom6x, math games, unblocked games google sites, google sites, google sites unblocked games, html unblocked games, github unblocked games, school unblocked games, github games, school games, html games, free games, online games, coolfunscience, science games, math games, google sites, google sites games, games google sites, sitesgoogle games, games sitesgoogle, githubio games, github io games, szvy github games, szvycentral.pages.dev, szvycentral.netlify.app, szvycentral.vercel.app, tidym.vercel.app, subtoszvy, mathplayground, games unblocked, youtube unblocked, tiktok unblocked, youtube, tiktok, how to play unblocked games at school, games, online games, fortnite games unblocked, nowgg unblocked, nowgg alt links, nowgg, geforce now unblocked, geforcenow, geforce unblocked, geforcenow unblocked, geforce unblocked, play games, unblocked games for school, skibidi szvy">
+    <meta name="theme-color" content="#0f0f0f">
+    <meta name="msapplication-TileColor" content="#0f0f0f">
+    <meta property="image" content="/assets/logo.webp">
+    <meta property="og:image" content="../assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+    <script src="../js/panic.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/usesettings.js"></script>
+    <script src="/particles.js"></script>
+    <script src="/app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/js/navbar.js"></script>
+    <style>
+        body { overflow-y: auto !important; padding-top: 76px; }
+
+        #user-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-dark);
+            box-shadow: 0 0 14px var(--shadow-primary);
+            display: block;
+            margin: 0 auto 16px;
+        }
+
+        #user-name {
+            font-family: title;
+            font-size: 28px;
+            color: var(--text-white);
+            text-align: center;
+            margin: 0 0 6px;
+        }
+
+        #user-email {
+            font-family: notitle;
+            font-size: 16px;
+            color: var(--text-gray);
+            text-align: center;
+            margin: 0 0 20px;
+        }
+
+        #google-signin, #sign-out-btn {
+            font-family: notitle;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            border-radius: 8px;
+            outline: 2px solid var(--accent-dark);
+            border: 4px solid transparent;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #google-signin:hover, #sign-out-btn:hover {
+            border: 4px solid var(--accent-dark);
+            box-shadow: 0 0 10px var(--accent-dark), 0 0 20px var(--accent-dark), 0 0 30px var(--accent-dark);
+            outline: 2px solid transparent;
+        }
+
+        .section p {
+            font-family: notitle;
+            color: var(--text-gray);
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .section .form__input {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div id="loading-screen">
+        <div id="loading-spinner"></div>
+        <h1 id="ld"></h1>
+    </div>
+
+    <h1 id="title">Account</h1>
+
+    <div id="signed-out" class="section" style="display:none">
+        <h2>Sign In</h2>
+        <p>sync your settings and data across devices</p>
+        <div class="buttons-here">
+            <button id="google-signin"><i class="fa-brands fa-google"></i> Sign in with Google</button>
+        </div>
+    </div>
+
+    <div id="signed-in" class="section" style="display:none">
+        <h2>Profile</h2>
+        <img id="user-avatar" src="" alt="" referrerpolicy="no-referrer">
+        <p id="user-name"></p>
+        <p id="user-email"></p>
+        <div class="buttons-here">
+            <a id="view-profile-btn" class="bookmarklet-btn" style="display:none;text-decoration:none;" href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Profile</a>
+            <button id="sign-out-btn"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+        </div>
+    </div>
+
+    <div id="username-section" class="section" style="display:none">
+        <h2>Username</h2>
+        <p>your public profile url: <span id="profile-url" style="color:var(--text-white)"></span></p>
+        <input id="username-input" class="form__input" placeholder="username" maxlength="20" autocomplete="off" spellcheck="false">
+        <div id="username-status" style="font-family:notitle;font-size:14px;margin-top:8px;text-align:center;min-height:20px;"></div>
+        <div class="buttons-here">
+            <button id="save-username" class="bookmarklet-btn"><i class="fa-solid fa-check"></i> Save Username</button>
+        </div>
+    </div>
+
+    <div id="bio-section" class="section" style="display:none">
+        <h2>Bio</h2>
+        <textarea id="bio-input" class="form__input" maxlength="200" placeholder="write something about yourself..." style="height:100px;resize:vertical;"></textarea>
+        <div id="bio-count" style="font-family:notitle;font-size:14px;color:var(--text-gray);text-align:center;margin-top:4px;">0 / 200</div>
+        <div class="buttons-here">
+            <button id="save-bio" class="bookmarklet-btn"><i class="fa-solid fa-check"></i> Save Bio</button>
+        </div>
+    </div>
+
+    <div id="privacy-section" class="section" style="display:none">
+        <h2>Privacy</h2>
+        <label class="anticlose-container">
+            <span class="checkmark">Show most played game on profile</span>
+            <input type="checkbox" id="show-most-played" checked>
+        </label>
+    </div>
+
+    <script type="module">
+        import { auth, db, googleProvider, signInWithPopup, signOut, doc, getDoc, setDoc, deleteDoc } from '/js/firebase-init.js';
+
+        const signedOut = document.getElementById("signed-out");
+        const signedIn = document.getElementById("signed-in");
+        const avatar = document.getElementById("user-avatar");
+        const userName = document.getElementById("user-name");
+        const userEmail = document.getElementById("user-email");
+        const profileSections = ['username-section', 'bio-section', 'privacy-section'];
+
+        let currentUsername = null;
+
+        async function loadProfile(user) {
+            const snap = await getDoc(doc(db, 'users', user.uid));
+            if (!snap.exists()) return;
+            const data = snap.data();
+
+            currentUsername = data.username || null;
+            if (currentUsername) {
+                localStorage.setItem('soloUsername', currentUsername);
+                document.getElementById('username-input').value = currentUsername;
+                document.getElementById('profile-url').textContent = location.origin + '/u/' + currentUsername;
+                const viewBtn = document.getElementById('view-profile-btn');
+                viewBtn.href = '/u/' + currentUsername;
+                viewBtn.style.display = '';
+            }
+            if (data.bio) document.getElementById('bio-input').value = data.bio;
+            if (data.showMostPlayed !== undefined) {
+                document.getElementById('show-most-played').checked = data.showMostPlayed;
+            }
+            updateBioCount();
+        }
+
+        function updateBioCount() {
+            const bio = document.getElementById('bio-input').value;
+            document.getElementById('bio-count').textContent = bio.length + ' / 200';
+        }
+
+        function showSections(visible) {
+            profileSections.forEach(id => {
+                document.getElementById(id).style.display = visible ? 'block' : 'none';
+            });
+        }
+
+        function updateUI(user) {
+            if (user) {
+                signedOut.style.display = "none";
+                signedIn.style.display = "block";
+                avatar.src = user.photoURL || "";
+                userName.textContent = user.displayName || "User";
+                userEmail.textContent = user.email || "";
+                showSections(true);
+                loadProfile(user);
+            } else {
+                signedOut.style.display = "block";
+                signedIn.style.display = "none";
+                showSections(false);
+                currentUsername = null;
+            }
+        }
+
+        document.addEventListener('soloAuthChanged', (e) => updateUI(e.detail.user));
+
+        document.getElementById("google-signin").addEventListener("click", () => {
+            signInWithPopup(auth, googleProvider);
+        });
+
+        document.getElementById("sign-out-btn").addEventListener("click", () => {
+            signOut(auth);
+        });
+
+        document.getElementById('bio-input').addEventListener('input', updateBioCount);
+
+        document.getElementById('username-input').addEventListener('input', () => {
+            const val = document.getElementById('username-input').value;
+            const status = document.getElementById('username-status');
+            const valid = /^[a-z0-9_]{3,20}$/.test(val);
+            if (!val) { status.textContent = ''; return; }
+            if (!valid) {
+                status.style.color = '#e74c3c';
+                status.textContent = '3–20 chars, lowercase letters, numbers, underscores only';
+            } else {
+                status.style.color = 'var(--text-gray)';
+                status.textContent = '';
+            }
+        });
+
+        document.getElementById('save-username').addEventListener('click', async () => {
+            const user = auth.currentUser;
+            if (!user) return;
+            const val = document.getElementById('username-input').value.trim().toLowerCase();
+            const status = document.getElementById('username-status');
+
+            if (!/^[a-z0-9_]{3,20}$/.test(val)) {
+                status.style.color = '#e74c3c';
+                status.textContent = 'Invalid username format';
+                return;
+            }
+
+            if (val !== currentUsername) {
+                const taken = await getDoc(doc(db, 'usernames', val));
+                if (taken.exists() && taken.data().uid !== user.uid) {
+                    status.style.color = '#e74c3c';
+                    status.textContent = 'Username already taken';
+                    return;
+                }
+                if (currentUsername) await deleteDoc(doc(db, 'usernames', currentUsername));
+                await setDoc(doc(db, 'usernames', val), { uid: user.uid });
+            }
+
+            await setDoc(doc(db, 'users', user.uid), { username: val }, { merge: true });
+            currentUsername = val;
+            localStorage.setItem('soloUsername', val);
+            document.getElementById('profile-url').textContent = location.origin + '/u/' + val;
+            const viewBtn = document.getElementById('view-profile-btn');
+            viewBtn.href = '/u/' + val;
+            viewBtn.style.display = '';
+            status.style.color = '#2ecc71';
+            status.textContent = 'Saved!';
+            setTimeout(() => status.textContent = '', 2000);
+        });
+
+        document.getElementById('save-bio').addEventListener('click', async () => {
+            const user = auth.currentUser;
+            if (!user) return;
+            const bio = document.getElementById('bio-input').value.trim();
+            await setDoc(doc(db, 'users', user.uid), { bio }, { merge: true });
+            const btn = document.getElementById('save-bio');
+            btn.textContent = 'Saved!';
+            setTimeout(() => { btn.innerHTML = '<i class="fa-solid fa-check"></i> Save Bio'; }, 2000);
+        });
+
+        document.getElementById('show-most-played').addEventListener('change', async () => {
+            const user = auth.currentUser;
+            if (!user) return;
+            const val = document.getElementById('show-most-played').checked;
+            await setDoc(doc(db, 'users', user.uid), { showMostPlayed: val }, { merge: true });
+        });
+    </script>
+</body>
+
+</html>

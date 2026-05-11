@@ -1,4 +1,21 @@
 var iframe = document.getElementById("iframe");
+var _trackedGame = null;
+var _trackedImg = null;
+var _trackedUrl = null;
+var _trackingDone = false;
+
+function _tryTrackGame() {
+    if (_trackingDone || !_trackedGame || !window.__soloUser || !window.__soloDB) return;
+    _trackingDone = true;
+    const key = _trackedGame.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+    import("https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js").then(({ doc, setDoc, increment }) => {
+        setDoc(doc(window.__soloDB, 'users', window.__soloUser.uid), {
+            gamePlays: { [key]: { name: _trackedGame, img: _trackedImg || '', url: _trackedUrl || '', count: increment(1) } }
+        }, { merge: true });
+    });
+}
+
+document.addEventListener('soloAuthChanged', _tryTrackGame);
     
 function fullscreen() {
     if (iframe.requestFullscreen) iframe.requestFullscreen();
@@ -33,6 +50,10 @@ async function fetchGameData() {
 
         if (game && game.alt) {
             document.getElementById("titletext").textContent = game.alt;
+            _trackedGame = game.alt;
+            _trackedImg = game.img || null;
+            _trackedUrl = game.url || null;
+            _tryTrackGame();
         }
     } catch (error) {
         console.error("Error fetching JSON:", error);

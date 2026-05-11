@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/gh/solual/-/ads/link.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <title>calculator - Google Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f0f0f">
+    <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+    <script src="/js/panic.js"></script>
+    <script src="/js/loading.js"></script>
+    <script src="/js/usesettings.js"></script>
+    <script src="/particles.js"></script>
+    <script src="/app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/js/navbar.js"></script>
+    <style>
+        body { overflow-y: auto !important; padding-top: 20px; }
+
+        .navbar-container {
+            transform: translateX(-50%) translateY(-110%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar-container.nav-open {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        #profile-card, #most-played-section, #not-found-section {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        #nav-toggle {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10001;
+            background: var(--navbar-bg);
+            border: none;
+            color: var(--text-white);
+            padding: 5px 20px 7px;
+            border-radius: 0 0 14px 14px;
+            cursor: url('/assets/select.cur'), pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            transition: background 0.2s ease;
+        }
+
+        #nav-toggle:hover {
+            background: var(--quicklink-hover);
+        }
+
+        #nav-toggle i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        #nav-toggle.open i {
+            transform: rotate(180deg);
+        }
+
+        #profile-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-dark);
+            box-shadow: 0 0 18px var(--shadow-primary);
+            display: block;
+            margin: 0 auto 16px;
+        }
+
+        #profile-displayname {
+            font-family: title;
+            font-size: 32px;
+            color: var(--text-white);
+            text-align: center;
+            margin: 0 0 4px;
+        }
+
+        #profile-username {
+            font-family: notitle;
+            font-size: 15px;
+            color: var(--text-gray);
+            text-align: center;
+            margin: 0 0 16px;
+        }
+
+        #profile-bio {
+            font-family: notitle;
+            font-size: 16px;
+            color: var(--text-gray);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 8px;
+            line-height: 1.5;
+        }
+
+        #not-found {
+            font-family: notitle;
+            font-size: 20px;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        #most-played-section {
+            position: relative;
+            overflow: hidden;
+            padding: 48px 24px 36px;
+            border-radius: 12px;
+        }
+
+        #most-played-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px) brightness(0.25);
+            transform: scale(1.15);
+            z-index: 0;
+        }
+
+        #most-played-section h2,
+        #most-played-section p,
+        #most-played-section a {
+            position: relative;
+            z-index: 1;
+        }
+
+        #most-played-game {
+            font-family: title;
+            font-size: 28px;
+            color: var(--text-white);
+            text-align: center;
+            margin: 0 0 16px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        #most-played-play {
+            display: inline-block;
+            text-decoration: none;
+            font-family: notitle;
+            font-size: 1.1em;
+            padding: 10px 28px;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+        }
+
+        #most-played-play:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.7);
+        }
+
+        #joined-section {
+            padding: 24px 28px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #joined-section p {
+            font-family: notitle;
+            font-size: 20px;
+            color: var(--text-gray);
+            text-align: center;
+            margin: 0;
+        }
+
+        #joined-section strong {
+            color: var(--text-white);
+            font-family: notitle;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div id="loading-screen">
+        <div id="loading-spinner"></div>
+        <h1 id="ld"></h1>
+    </div>
+    <div id="profile-card" class="section" style="display:none">
+        <img id="profile-avatar" src="" alt="" referrerpolicy="no-referrer">
+        <p id="profile-displayname"></p>
+        <p id="profile-username"></p>
+        <p id="profile-bio"></p>
+    </div>
+
+    <div id="most-played-section" class="section" style="display:none">
+        <div id="most-played-bg"></div>
+        <h2>Most Played</h2>
+        <p id="most-played-game"></p>
+        <a id="most-played-play" href="#"><i class="fa-solid fa-play"></i> Play</a>
+    </div>
+
+    <div id="joined-section" class="section" style="display:none">
+        <p>joined <strong id="joined-date"></strong></p>
+    </div>
+
+    <div id="not-found-section" class="section" style="display:none">
+        <p id="not-found">User not found.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.createElement('button');
+            toggle.id = 'nav-toggle';
+            toggle.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+            document.body.appendChild(toggle);
+
+            toggle.addEventListener('click', () => {
+                const navbar = document.querySelector('.navbar-container');
+                const open = navbar.classList.toggle('nav-open');
+                toggle.classList.toggle('open', open);
+            });
+        });
+    </script>
+
+    <script type="module">
+        import { db, doc, getDoc } from '/js/firebase-init.js';
+
+        const username = window.location.pathname.split('/').filter(Boolean).pop();
+
+        async function loadProfile() {
+            if (!username || username === 'u') {
+                showNotFound();
+                return;
+            }
+
+            const usernameSnap = await getDoc(doc(db, 'usernames', username));
+            if (!usernameSnap.exists()) {
+                showNotFound();
+                return;
+            }
+
+            const uid = usernameSnap.data().uid;
+            const userSnap = await getDoc(doc(db, 'users', uid));
+            if (!userSnap.exists()) {
+                showNotFound();
+                return;
+            }
+
+            const p = userSnap.data();
+            document.title = (p.username || username) + ' - Solo Central';
+
+            document.getElementById('profile-avatar').src = p.photoURL || '';
+            document.getElementById('profile-displayname').textContent = p.displayName || username;
+            document.getElementById('profile-username').textContent = '@' + (p.username || username);
+            document.getElementById('profile-bio').textContent = p.bio || '';
+            document.getElementById('profile-card').style.display = 'block';
+
+            if (p.joinedAt) {
+                const date = new Date(p.joinedAt);
+                document.getElementById('joined-date').textContent = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('joined-section').style.display = 'block';
+            }
+
+            if (p.theme) {
+                document.documentElement.setAttribute('data-theme', p.theme);
+            }
+
+            if (p.showMostPlayed !== false && p.gamePlays) {
+                let mostPlayed = null;
+                let maxCount = 0;
+                for (const val of Object.values(p.gamePlays)) {
+                    if (val.count > maxCount) {
+                        maxCount = val.count;
+                        mostPlayed = val;
+                    }
+                }
+                if (mostPlayed) {
+                    document.getElementById('most-played-game').textContent = mostPlayed.name;
+                    document.getElementById('most-played-section').style.display = 'block';
+
+                    const gamesRes = await fetch('/json/gg.json');
+                    const games = await gamesRes.json();
+                    const match = games.find(g => g.alt.toLowerCase() === mostPlayed.name.toLowerCase());
+                    const img = match?.img || mostPlayed.img;
+                    const url = match?.url || mostPlayed.url;
+
+                    if (img) {
+                        document.getElementById('most-played-bg').style.backgroundImage = `url('${img}')`;
+                    }
+                    if (url) {
+                        document.getElementById('most-played-play').href = '/iframe.html?url=' + encodeURIComponent(url);
+                    }
+                }
+            }
+        }
+
+        function showNotFound() {
+            document.getElementById('title').textContent = 'Not Found';
+            document.getElementById('title').style.display = '';
+            document.getElementById('not-found-section').style.display = 'block';
+        }
+
+        loadProfile();
+    </script>
+</body>
+
+</html>
