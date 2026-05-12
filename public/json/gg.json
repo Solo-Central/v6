@@ -135,11 +135,6 @@
     "alt": "chess"
   },
   {
-    "url": "/gsrc/cluster-rush/index.html",
-    "img": "/assets/cluster.png",
-    "alt": "cluster rush"
-  },
-  {
     "url": "/gsrc/dino/index.html",
     "img": "/assets/dino.png",
     "alt": "chrome dino"
@@ -1083,5 +1078,10 @@
     "url": "/gxmez/need-for-speed-most-wanted.html",
     "img": "/assets/need-for-speed-most-wanted.webp",
     "alt": "Need For Speed: Most Wanted" 
+  },
+  {
+    "url": "/gsrc/clustertruck/",
+    "img": "/assets/clustertruck.webp",
+    "alt": "Cluster Truck" 
   }
 ]
