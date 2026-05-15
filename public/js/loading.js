@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const headings = [
         "fanq stop breaching my vps",
+        "dom dom dom sahuuuuurrrr",
         "'francc stop lyin you aint 22' actual peak tag",
         "discord.gg/mUKy3wrMcp",
         "certain tax provisions",
