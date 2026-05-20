@@ -4,21 +4,17 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-M2Y60WTE1D');
-</script>
-<!DOCTYPE html>
+</script><!DOCTYPE html>
 <html>
 <head>
    <script src="https://cdn.jsdelivr.net/gh/solual/-/ads/link.js"></script>
+
     
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="/css/gg.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet">
-    <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
-    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/videojs-ima/1.10.1/videojs.ima.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-ima/1.10.1/videojs.ima.min.js"></script>
     
     <title>calculator - Google Search</title>
     <meta name="title" content="Solo Central">
@@ -38,44 +34,13 @@
         body {
             overflow: hidden;
         }
-
-        #video-ad-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #video-ad-wrapper {
-            position: relative;
-            width: 640px;
-            max-width: 95vw;
-        }
-
-        #my-video {
-            width: 100%;
-        }
     </style>
     <script src="/js/navbar.js"></script>
 </head>
 <body>
-    <div id="video-ad-overlay">
-        <div id="video-ad-wrapper">
-            <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered"
-                controls preload="auto" width="640" height="360">
-                <source src="" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
     <div id="particles-js"></div>
     <div id="loading-screen"><div id="loading-spinner"></div><h1 id="ld"></h1></div>
+
     <div id="gameframe">
         <div class="gameDisplay">
             <div class="game"><iframe id="iframe" src="/404.html"></iframe></div>
@@ -91,6 +56,7 @@
             </div>
         </div>
     </div>
+
     <div class="addisplay" id="addisplay">
         <ins id="adElement">
 <script>
@@ -103,8 +69,10 @@
   };
 </script>
 <script src="https://throbbingimmensely.com/7ad5e09cb640f0a2685552f84441122a/invoke.js"></script>
+
         </ins>
     </div>
+
     <div class="bottom-addisplay" id="bottomAddisplay">
         <ins id="bottomAdElement">
 <script>
@@ -117,28 +85,11 @@
   };
 </script>
 <script src="https://throbbingimmensely.com/66aeb0ac169a360ac8b2103eb5b56c91/invoke.js"></script>
+
         </ins>
     </div>
+
     <script src="/js/frame.js"></script>
-
-    <script>
-        const player = videojs("my-video");
-
-        player.ima({
-            adTagUrl: "https://youradexchange.com/video/select.php?r=11337078",
-        });
-
-        function dismissAdOverlay() {
-            const overlay = document.getElementById("video-ad-overlay");
-            if (overlay) {
-                overlay.style.display = "none";
-                player.dispose();
-            }
-        }
-
-        player.on("ads-ad-ended", dismissAdOverlay);
-        player.on("adserror", dismissAdOverlay);
-        player.on("ended", dismissAdOverlay);
-    </script>
+    
 </body>
 </html>
